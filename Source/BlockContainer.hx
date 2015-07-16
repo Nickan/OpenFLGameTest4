@@ -292,7 +292,7 @@ class BlockContainer extends Sprite
 		}
 	}
 	
-	function repositionBlocksBasedOnTheirBlockArrayAddress(fallSpeed: Float = 0.2) 
+	function repositionBlocksBasedOnTheirBlockArrayAddress(fallSpeed: Float = 0.15) 
 	{
 		var DEFAULT_FALL_SPEED :Float = stage.stageHeight * fallSpeed;
 		var highestDurationBlockFall :Float = 0;
@@ -308,7 +308,7 @@ class BlockContainer extends Sprite
 					var duration = Math.abs(dist / DEFAULT_FALL_SPEED);
 					if (duration > highestDurationBlockFall)
 						highestDurationBlockFall = duration;
-					Actuate.tween(block, duration, { y: targetPos } ).ease(Linear.easeNone);
+					Actuate.tween(block, duration, { y: targetPos } );
 				}
 			}
 		}
