@@ -42,7 +42,8 @@ class TextButton extends Sprite
 	function setupSimpleButton() 
 	{
 		addChild(_simpleButton);
-		_simpleButton.hitTestState = _simpleButton.overState;
+		if (_simpleButton.hitTestState == null)
+			_simpleButton.hitTestState = _simpleButton.upState;
 		_simpleButton.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 	}
 	

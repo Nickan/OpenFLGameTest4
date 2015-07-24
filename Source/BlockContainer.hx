@@ -81,7 +81,7 @@ class BlockContainer extends Sprite
 						}
 						else {
 							var repositionTimeToBeFinished = removeBlocks(neighborMatches);
-							Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000));
+							Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000) + 1000);
 						}
 						
 					} );
@@ -95,7 +95,7 @@ class BlockContainer extends Sprite
 						}
 						else {
 							var repositionTimeToBeFinished = removeBlocks(neighborMatches);
-							Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000));
+							Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000) + 1000);
 						}
 						
 					} );
@@ -110,7 +110,7 @@ class BlockContainer extends Sprite
 						}
 						else {
 							var repositionTimeToBeFinished = removeBlocks(neighborMatches);
-							Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000));
+							Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000) + 1000);
 						}
 					} );
 						
@@ -124,7 +124,7 @@ class BlockContainer extends Sprite
 						}
 						else {
 							var repositionTimeToBeFinished = removeBlocks(neighborMatches);
-							Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000));
+							Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000) + 1000);
 						}
 					} );
 		}
@@ -143,7 +143,7 @@ class BlockContainer extends Sprite
 		var matchesToRemove = getMatchesToRemove();
 		if (matchesToRemove.length != 0) {
 			var repositionTimeToBeFinished = removeBlocks(matchesToRemove);
-			Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000));
+			Timer.delay(recursiveCheckForMatches, Std.int(repositionTimeToBeFinished * 1000)  + 1000);
 		} else {
 			setReadyForChecking();
 		}
@@ -370,8 +370,11 @@ class BlockContainer extends Sprite
 		var horizontalBlocks = [];
 		var sameLeftBlocks = getSameLeftBlocks(point, id);
 		var sameRightBlocks = getSameRightBlocks(point, id);
-		horizontalBlocks = horizontalBlocks.concat(sameLeftBlocks);
-		horizontalBlocks = horizontalBlocks.concat(sameRightBlocks);
+		if (sameLeftBlocks.length > 0 && sameRightBlocks.length > 0) {
+			horizontalBlocks = horizontalBlocks.concat(sameLeftBlocks);
+			horizontalBlocks = horizontalBlocks.concat(sameRightBlocks);
+		}
+		
 		return horizontalBlocks;
 	}
 	
@@ -380,8 +383,10 @@ class BlockContainer extends Sprite
 		var verticalBlocks = [];
 		var sameTopBlocks = getSameTopBlocks(point, id);
 		var sameBottomBlocks = getSameBottomBlocks(point, id);
-		verticalBlocks = verticalBlocks.concat(sameTopBlocks);
-		verticalBlocks = verticalBlocks.concat(sameBottomBlocks);
+		if (sameTopBlocks.length > 0 && sameBottomBlocks.length > 0) {
+			verticalBlocks = verticalBlocks.concat(sameTopBlocks);
+			verticalBlocks = verticalBlocks.concat(sameBottomBlocks);
+		}
 		return verticalBlocks;
 	}
 	

@@ -53,7 +53,8 @@ class TitleScreen extends Screen
 	{
 		_playButton = new TextButton("Play", new Bitmap(Assets.getBitmapData("assets/asset_large_btn_up.png")),
 								new Bitmap(Assets.getBitmapData("assets/asset_large_btn_up.png")),
-								new Bitmap(Assets.getBitmapData("assets/asset_large_btn_down.png")), null, onPlay);
+								new Bitmap(Assets.getBitmapData("assets/asset_large_btn_down.png")), null, onPlay);	
+		
 		addChild(_playButton);
 		_playButton.x = stage.stageWidth * 0.5 - (_playButton.width * 0.5);
 		_playButton.y = (stage.stageHeight * 0.6) - (_playButton.height * 0.5);

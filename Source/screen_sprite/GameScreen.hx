@@ -4,10 +4,6 @@ import framework.ScreenManager;
 import framework.TextButton;
 import framework.TextSprite;
 import framework.TimeManager;
-import framework.TimeManager;
-import framework.TimeManager;
-import haxe.Timer;
-import motion.Actuate;
 import openfl.Assets;
 import openfl.display.Bitmap;
 import openfl.events.Event;
@@ -94,7 +90,10 @@ class GameScreen extends Screen
 		
 		_scoreTextSprite = new TextSprite(15);
 		addChild(_scoreTextSprite);
-		_scoreTextSprite.x = stage.stageWidth * 0.205;
+		_scoreTextSprite.x = (scoreSprite.x + scoreSprite.getBounds(this).width * 0.5) + stage.stageWidth * 0.0;
+		#if html5
+			_scoreTextSprite.x = (scoreSprite.x + scoreSprite.getBounds(this).width * 1) + stage.stageWidth * 0.0;
+		#end
 		_scoreTextSprite.y = stage.stageHeight * 0.0425;
 		_scoreTextSprite.setTextFieldAutoSize(TextFieldAutoSize.RIGHT);
 		_scoreTextSprite.showText("" + _score);
@@ -111,6 +110,9 @@ class GameScreen extends Screen
 		_timeTextSprite = new TextSprite(15);
 		addChild(_timeTextSprite);
 		_timeTextSprite.x = stage.stageWidth * 0.5;
+		#if html5
+			_timeTextSprite.x = (timeSprite.x + timeSprite.getBounds(this).width * 1.45) + stage.stageWidth * 0.0;
+		#end
 		_timeTextSprite.y = stage.stageHeight * 0.0425;
 		_timeTextSprite.setTextFieldAutoSize(TextFieldAutoSize.RIGHT);
 		_timeTextSprite.showText("" + _time);
